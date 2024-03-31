@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('pages.cashier.home', [
+            'title' => 'Dashboard Kasir'
+        ]);
+    }
+
+    public function success($id)
+    {
+        return view('pages.cashier.success', [
+            'title' => 'Transaksi Sukses',
+            'transaction' => Transaction::find($id)
+        ]);
     }
 }
